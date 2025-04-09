@@ -1,8 +1,6 @@
-import sys
 import psutil
 from PIL import Image, ImageDraw, ImageFont
 from lcd_status import Led
-from time import sleep
 
 
 led = Led()
@@ -52,13 +50,8 @@ def critialprocess():
         return "No se pudo obtener información sobre los procesos."
 
 def main():
-    delay = 60
-
-    if len(sys.argv) > 1:
-        delay = int(sys.argv[1])
-
     led.println([memusage(), cpuusage(), temperaturecpu(),critialprocess()])
-    sleep(delay)
+    
 
 if __name__ == "__main__":
     main()
