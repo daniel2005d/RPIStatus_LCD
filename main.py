@@ -51,10 +51,14 @@ def critialprocess():
     else:
         return "No se pudo obtener información sobre los procesos."
 
-delay = 60
+def main():
+    delay = 60
 
-if len(sys.argv) > 1:
-    delay = int(sys.argv[1])
+    if len(sys.argv) > 1:
+        delay = int(sys.argv[1])
 
-led.println([memusage(), cpuusage(), temperaturecpu(),critialprocess()])
-sleep(delay)
+    led.println([memusage(), cpuusage(), temperaturecpu(),critialprocess()])
+    sleep(delay)
+
+if __name__ == "__main__":
+    main()
