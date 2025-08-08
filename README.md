@@ -8,6 +8,14 @@
 | SDA          | Pin 3 (GPIO 2/SDA) | Data         |
 
 
+# PUSH Button
+
+| Button | GPIO Raspberry Pi      |
+| ----- | ---------------------- |
+| Pin 1 | GPIO17 (pin 11) |
+| Pin 2 | GND (pin  6)     |
+
+
 # Add to crontab
 
 <!-- status.sh -->
