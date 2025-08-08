@@ -78,11 +78,11 @@ def main():
                 print_list.append(memusage())
                 print_list.append(temperaturecpu())
                 led.println(print_list)
-                time.sleep(1)
+                time.sleep(10)
             else:
                 clock.show()
             
-            time.sleep(0.5)
+            time.sleep(5)
     except KeyboardInterrupt:
         GPIO.cleanup()
     
