@@ -20,6 +20,7 @@ setup(
     install_requires=["Adafruit_Blinka==8.56.0",
                     "adafruit_circuitpython_ssd1306==2.12.19",
                     "board==1.0",
+                    "psutil",
                     "Pillow==11.1.0",
                     "psutil==7.0.0"], 
     entry_points={

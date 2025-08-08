@@ -65,8 +65,10 @@ def critialprocess():
         return "No se pudo obtener información sobre los procesos."
 
 def main():
-    address = getipaddress()
-    led.println(address)
+    print_list = getipaddress()
+    print_list.append(memusage())
+    print_list.append(cpuusage())
+    led.println(print_list)
     #led.println([memusage(), cpuusage(), ])
     
 
