@@ -70,8 +70,7 @@ def critialprocess():
 def main():
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    GPIO.cleanup()
-
+    clock.show()
     try:
         while True:
             if GPIO.input(17) == GPIO.LOW:
@@ -79,7 +78,7 @@ def main():
                 print_list.append(memusage())
                 print_list.append(temperaturecpu())
                 led.println(print_list)
-                time.sleep(30)
+                time.sleep(5)
             else:
                 clock.show()
             
