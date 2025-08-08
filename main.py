@@ -67,7 +67,7 @@ def critialprocess():
 def main():
     print_list = getipaddress()
     print_list.append(memusage())
-    print_list.append(cpuusage())
+    print_list.append(temperaturecpu())
     led.println(print_list)
     #led.println([memusage(), cpuusage(), ])
     
