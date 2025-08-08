@@ -78,6 +78,7 @@ def main():
                 print_list.append(memusage())
                 print_list.append(temperaturecpu())
                 led.println(print_list)
+                time.sleep(1)
             else:
                 clock.show()
             
