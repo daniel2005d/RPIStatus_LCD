@@ -74,14 +74,12 @@ def main():
     try:
         while True:
             if GPIO.input(17) == GPIO.LOW:
-                print("Button pressed, updating display...")
                 print_list = getipaddress()
                 print_list.append(memusage())
                 print_list.append(temperaturecpu())
                 led.println(print_list)
                 time.sleep(30)
             else:
-                print("Clock")
                 clock.show()
             
             time.sleep(5)
