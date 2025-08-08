@@ -82,7 +82,7 @@ def main():
             else:
                 clock.show()
             
-            time.sleep(5)
+            time.sleep(0.5)
     except KeyboardInterrupt:
         GPIO.cleanup()
     
