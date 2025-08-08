@@ -1,7 +1,8 @@
 import psutil
 from PIL import Image, ImageDraw, ImageFont
 from lcd_status import Led
-
+import socket
+import psutil
 
 led = Led()
 
@@ -26,7 +27,21 @@ def temperaturecpu():
             for sensor in temperaturas['cpu_thermal']:
                 message+=f"{sensor.label}: {sensor.current}°C"
     return message
-    
+
+def getipaddress():
+    address = []
+    addrs = psutil.net_if_addrs()
+    for interface, addr_list in addrs.items():
+        if interface == 'lo':
+            continue
+        for addr in addr_list:
+            if addr.family == socket.AF_INET:
+                #print(f"  {interface}: {addr.address}")
+                address.append(f"{interface}: {addr.address}")
+
+    return address
+        #elif addr.family == psutil.AF_LINK:  # Esto sí es de psutil
+        #    print(f"  MAC: {addr.address}")
 
 def critialprocess():
     # Obtener todos los procesos en ejecución
@@ -50,7 +65,9 @@ def critialprocess():
         return "No se pudo obtener información sobre los procesos."
 
 def main():
-    led.println([memusage(), cpuusage(), temperaturecpu(),critialprocess()])
+    address = getipaddress()
+    led.println(address)
+    #led.println([memusage(), cpuusage(), ])
     
 
 if __name__ == "__main__":
