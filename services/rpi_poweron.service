@@ -1,0 +1,14 @@
+[Unit]
+Description=Ejecutar script Python al iniciar
+After=network.target
+
+[Service]
+ExecStart=/home/daniel/poweron.sh
+WorkingDirectory=/home/daniel
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
