@@ -3,8 +3,6 @@ from PIL import Image, ImageDraw, ImageFont
 from lcd_status import Led
 import socket
 import psutil
-import clock
-import RPi.GPIO as GPIO
 import time
 
 led = Led()
@@ -68,25 +66,11 @@ def critialprocess():
         return "No se pudo obtener información sobre los procesos."
 
 def main():
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    clock.show()
-    try:
-        while True:
-            if GPIO.input(17) == GPIO.LOW:
-                print_list = getipaddress()
-                print_list.append(memusage())
-                print_list.append(temperaturecpu())
-                led.println(print_list)
-                time.sleep(5)
-            else:
-                clock.show()
-            
-            time.sleep(0.5)
-    except KeyboardInterrupt:
-        GPIO.cleanup()
+    print_list = getipaddress()
+    print_list.append(memusage())
+    print_list.append(temperaturecpu())
+    led.println(print_list)
+    time.sleep(5)
     
-
-
 if __name__ == "__main__":
     main()
