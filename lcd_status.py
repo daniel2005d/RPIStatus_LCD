@@ -8,7 +8,7 @@ class Led:
 
     def __init__(self, font_name=None, font_size=None):
         self.__initialize()
-        if font_name and font_size:
+        if font_name is None and font_size is None:
             self._font = ImageFont.load_default()
         else:
             self._font = ImageFont.truetype(font_name, font_size)
