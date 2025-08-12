@@ -6,10 +6,13 @@ import adafruit_ssd1306
 
 class Led:
 
-    def __init__(self):
+    def __init__(self, font_name=None, font_size=None):
         self.__initialize()
-
-
+        if font_name and font_size:
+            self._font = ImageFont.load_default()
+        else:
+            self._font = ImageFont.truetype(font_name, font_size)
+    
     def __initialize(self):
 
         i2c = busio.I2C(board.SCL, board.SDA)
@@ -19,8 +22,8 @@ class Led:
         
 
     def show_text(self, lines):
-        font = ImageFont.load_default()
-        ascent, descent = font.getmetrics()
+        
+        ascent, descent = self._font.getmetrics()
         line_height = ascent + descent + 2
        
         image = Image.new("1", (self._display.width, self._display.height))
@@ -33,7 +36,7 @@ class Led:
         for i, linea in enumerate(lines):
             y = i * line_height
             if y + line_height <= self._display.height:
-                draw.text((0, y), linea, font=font, fill=255)
+                draw.text((0, y), linea, font=self._font, fill=255)
             else:
                 break  # No escribir fuera del display
 
