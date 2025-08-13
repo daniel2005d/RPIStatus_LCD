@@ -1,14 +1,16 @@
 [Unit]
 Description=Ejecutar script Python al iniciar
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-ExecStart=/home/daniel/poweron.sh
+Type=simple
+User=root
 WorkingDirectory=/home/daniel
-StandardOutput=inherit
-StandardError=inherit
-Restart=always
-User=pi
+ExecStart=/home/daniel/poweron.sh
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+RestartSec=3
 
 [Install]
 WantedBy=multi-user.target
