@@ -32,3 +32,18 @@ python /home/daniel/RPIStatus_LCD/main.py
 ```bash
 * * * * * /status.sh >> crontab.log
 ```
+
+# Kali
+
+```bash
+sudo apt install python3-pip
+pip install RPi.GPIO
+
+sudo vim /boot/firmware/config.txt
+dtparam=i2c_arm=on
+
+sudo modprobe i2c-dev
+echo "i2c-dev" | sudo tee -a /etc/modules
+sudo apt install i2c-tools
+sudo reboot
+```
