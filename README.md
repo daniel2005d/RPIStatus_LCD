@@ -33,7 +33,7 @@ python /home/daniel/RPIStatus_LCD/main.py
 * * * * * /status.sh >> crontab.log
 ```
 
-# Kali
+# Install
 
 ```bash
 git clone https://github.com/daniel2005d/RPIStatus_LCD.git
@@ -42,7 +42,11 @@ sudo apt install python3-dev python3-pip python3-setuptools python3-wheel build-
 python -m venv .venv
 source .venv/bin/activate
 pip install RPi.GPIO
+```
 
+## Kali
+
+```bash
 sudo vim /boot/firmware/config.txt
 dtparam=i2c_arm=on # Uncomment this line
 
@@ -50,4 +54,11 @@ sudo modprobe i2c-dev
 echo "i2c-dev" | sudo tee -a /etc/modules
 sudo apt install i2c-tools
 sudo reboot
+```
+
+# Check
+
+```bash
+ls /dev/i2c*
+sudo i2cdetect -y <Devide ID>
 ```
