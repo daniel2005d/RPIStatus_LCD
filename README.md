@@ -59,6 +59,7 @@ sudo reboot
 # Check
 
 ```bash
+sudo apt install i2c-tools
 ls /dev/i2c*
 sudo i2cdetect -y <Devide ID>
 ```
