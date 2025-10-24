@@ -40,7 +40,7 @@ sudo apt install python3-pip
 pip install RPi.GPIO
 
 sudo vim /boot/firmware/config.txt
-dtparam=i2c_arm=on
+dtparam=i2c_arm=on # Uncomment this line
 
 sudo modprobe i2c-dev
 echo "i2c-dev" | sudo tee -a /etc/modules
