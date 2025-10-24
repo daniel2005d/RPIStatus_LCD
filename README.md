@@ -36,7 +36,11 @@ python /home/daniel/RPIStatus_LCD/main.py
 # Kali
 
 ```bash
-sudo apt install python3-pip
+git clone https://github.com/daniel2005d/RPIStatus_LCD.git
+cd RPIStatus_LCD
+sudo apt install python3-dev python3-pip python3-setuptools python3-wheel build-essential
+python -m venv .venv
+source .venv/bin/activate
 pip install RPi.GPIO
 
 sudo vim /boot/firmware/config.txt
